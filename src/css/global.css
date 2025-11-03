@@ -1,0 +1,137 @@
+:root {
+  --paper: #f6efe2;
+  --paper-deep: #efe4d0;
+  --ink: #1c2a1f;
+  --ink-soft: #3d4f41;
+  --leaf: #1f5a38;
+  --leaf-deep: #143d26;
+  --citrus: #f0b429;
+  --citrus-hot: #e0891a;
+  --berry: #c43c4e;
+  --pulp: #f3c7a4;
+  --mist: #e7f0e4;
+  --card: #fffaf2;
+  --line: #ddcfb6;
+
+  --color-50: #fffaf2;
+  --color-100: #efe6d4;
+  --color-200: #ddcfb6;
+  --color-300: #cbb99a;
+  --color-400: #8b7a62;
+  --color-500: #6b5d4a;
+  --color-600: #3d4f41;
+  --color-700: #2c3b31;
+  --color-800: #1c2a1f;
+  --color-900: #121c15;
+  --color-950: #0a120d;
+
+  --color-red: var(--berry);
+  --color-blue: var(--leaf);
+  --color-blue-dark: var(--leaf-deep);
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Figtree", "Avenir Next", "Trebuchet MS", sans-serif;
+  --shadow-card: 0 18px 40px rgba(28, 42, 31, 0.08);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: var(--color-400);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-500);
+}
+
+html {
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(240, 180, 41, 0.18), transparent 55%),
+    radial-gradient(900px 420px at 100% 0%, rgba(31, 90, 56, 0.12), transparent 50%),
+    var(--paper);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+svg {
+  height: 24px;
+  width: 24px;
+}
+
+hr {
+  width: 100%;
+  border: 1px solid var(--line);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+button,
+input {
+  font-family: inherit;
+}
