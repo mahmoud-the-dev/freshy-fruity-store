@@ -1,0 +1,22 @@
+.navbarLinks {
+  display: flex;
+  transform: translateY(2px);
+}
+
+.link {
+  padding: 12px 10px;
+  border-bottom: 2px solid transparent;
+  color: var(--ink-soft);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--leaf);
+  border-color: var(--citrus);
+}
+
+@media screen and (max-width: 768px) {
+  .navbarLinks {
+    display: none;
+  }
+}

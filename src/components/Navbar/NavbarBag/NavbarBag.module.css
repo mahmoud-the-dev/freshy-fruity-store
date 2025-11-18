@@ -1,0 +1,36 @@
+.navbarBag {
+  flex-shrink: 0;
+}
+
+.bagContainer {
+  cursor: pointer;
+}
+
+.bag {
+  height: 30px;
+  width: 30px;
+}
+
+.number {
+  pointer-events: none;
+  font-weight: 700;
+  font-size: 9px;
+}
+
+.bagContainer {
+  position: relative;
+}
+
+.number {
+  position: absolute;
+  top: 14.5px;
+  left: 12.5px;
+}
+
+.navbarBag .bagTooltip {
+  z-index: 2;
+  color: var(--ink);
+  background-color: var(--card);
+  box-shadow: var(--shadow-card);
+  border-radius: 16px;
+}

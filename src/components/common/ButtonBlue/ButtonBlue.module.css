@@ -1,0 +1,29 @@
+.buttonBlue {
+  cursor: pointer;
+  font-weight: 700;
+  color: #f7f1e3;
+  background-color: var(--leaf);
+  border: 1px solid var(--leaf);
+  border-radius: 999px;
+  height: 47px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buttonBlue:hover {
+  background-color: var(--leaf-deep);
+  transform: translateY(-1px);
+}
+.buttonBlue:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+
+.buttonBlue:disabled:hover {
+  background-color: var(--leaf);
+  transform: none;
+}

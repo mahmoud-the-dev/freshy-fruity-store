@@ -1,0 +1,50 @@
+.errorPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 28px;
+  padding: 40px 24px;
+  text-align: center;
+  background: var(--paper);
+}
+
+.logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+}
+
+.errorPage h1 {
+  max-width: 14ch;
+}
+
+.errorBody {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.errorBody h2 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--ink-soft);
+  max-width: 36ch;
+  line-height: 1.45;
+}
+
+.homeLink {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--leaf-deep);
+  background: var(--citrus);
+  border-radius: 999px;
+  padding: 14px 22px;
+  transition: transform 0.2s ease;
+}
+
+.homeLink:hover {
+  transform: translateY(-1px);
+}
