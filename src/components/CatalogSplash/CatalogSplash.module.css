@@ -1,0 +1,43 @@
+.splash {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.logo {
+  width: 96px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.splash h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+.splash p {
+  margin: 0;
+  max-width: 36rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.retry {
+  margin-top: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 22px;
+  background: var(--leaf);
+  color: #fffaf2;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.retry:hover {
+  background: var(--leaf-deep);
+}

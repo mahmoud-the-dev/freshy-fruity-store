@@ -1,0 +1,151 @@
+.fruitItem {
+  --spacing: 22px;
+  --image-size: 88px;
+  --icon-size: 26px;
+}
+
+.fruitItem {
+  background:
+    radial-gradient(circle at 80% 18%, rgba(240, 180, 41, 0.18), transparent 42%),
+    var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  aspect-ratio: 9 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 10px 24px rgba(28, 42, 31, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fruitItem:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.image {
+  transform: translateY(-10px);
+  height: var(--image-size);
+  width: var(--image-size);
+  object-fit: contain;
+}
+
+.info {
+  position: absolute;
+  bottom: var(--spacing);
+  left: var(--spacing);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: calc(100% - 70px);
+}
+
+.name,
+.family,
+.price {
+  font-size: 15px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 20px;
+}
+
+.price {
+  color: var(--leaf);
+}
+
+.express {
+  position: absolute;
+  top: var(--spacing);
+  left: var(--spacing);
+  z-index: 1;
+}
+
+.favorite,
+.bag {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  cursor: pointer;
+}
+
+.favorite {
+  position: absolute;
+  top: var(--spacing);
+  right: var(--spacing);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bag {
+  position: absolute;
+  bottom: var(--spacing);
+  right: var(--spacing);
+  transition: transform 0.2s ease;
+}
+
+@media screen and (max-width: 940px) {
+  .fruitItem {
+    --spacing: 15px;
+    aspect-ratio: 9 / 12;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fruitItem {
+    --spacing: 20px;
+    aspect-ratio: 9 / 10;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .fruitItem {
+    --spacing: 12px;
+    --image-size: 64px;
+    --icon-size: 20px;
+    border-radius: 14px;
+    aspect-ratio: 10 / 12;
+  }
+
+  .name,
+  .family,
+  .price {
+    font-size: 12px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  .info {
+    gap: 4px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .fruitItem {
+    aspect-ratio: 10 / 16;
+  }
+}
+
+.fruitItem:hover .favorite {
+  opacity: 1;
+}
+
+.favorite:hover {
+  transform: scale(1.2);
+}
+
+.favorite.clicked {
+  fill: var(--color-red);
+  opacity: 1;
+}
+
+.family {
+  color: var(--color-400);
+}
+
+.bag:hover {
+  transform: scale(1.2);
+}
