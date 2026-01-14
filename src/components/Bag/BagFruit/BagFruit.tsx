@@ -1,0 +1,53 @@
+import { useStoreContext } from "../../../Context";
+import { Link } from "react-router-dom";
+import styles from "./BagFruit.module.css";
+import { formatMoney } from "../../../utils/formatPrice";
+import InStock from "../../common/InStock/InStock";
+import ExpressDelivery from "../../common/ExpressDelivery/ExpressDelivery";
+import EditQuantity from "../../common/EditQuantity/EditQuantity";
+import DeleteIcon from "../../../icons/DeleteIcon";
+
+const BagFruit = ({ fruit }) => {
+  const { setFruits } = useStoreContext();
+  const { id, name, slug, family, price, quantity, expressDelivery } = fruit;
+
+  const handleDelete = () => {
+    setFruits((prevFruits) => prevFruits.map((f) => (f.id === id ? { ...f, inBag: false } : f)));
+  };
+
+  return (
+    <li className={styles.bagFruit}>
+      <div className={styles.leftContainer}>
+        <Link to={`/store/${slug}`}>
+          <div className={styles.imageContainer}>
+            <img className={styles.image} src={fruit.imageUrl} alt={name} />
+          </div>
+        </Link>
+
+        <div className={styles.infoAndQuantity}>
+          <div className={styles.info}>
+            <h3>{name}</h3>
+            <h4 className={styles.family}>{family} Family</h4>
+            <div className={styles.status}>
+              <InStock />
+              {expressDelivery ? <ExpressDelivery variant="chip" /> : null}
+            </div>
+            <div className={styles.qty}>Qty: {quantity}</div>
+          </div>
+
+          <EditQuantity fruit={fruit} />
+        </div>
+      </div>
+
+      <div className={styles.rightContainer}>
+        <div className={styles.delete} onClick={handleDelete}>
+          <DeleteIcon className={styles.deleteIcon} />
+        </div>
+
+        <h5 className={styles.price}>{formatMoney(price * quantity)}</h5>
+      </div>
+    </li>
+  );
+};
+
+export default BagFruit;

@@ -1,0 +1,164 @@
+/* Spacing */
+
+.bag {
+  padding: 50px;
+  padding-top: 60px;
+  gap: 30px;
+}
+
+.main {
+  gap: 50px;
+}
+
+.leftContainer {
+  gap: 30px;
+}
+
+.checkout {
+  gap: 30px;
+  width: 400px;
+  padding: 50px;
+}
+
+/* Other styles */
+
+.bag {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftContainer {
+  max-width: 630px;
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--card);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.priceTitle {
+  font-size: 24px;
+}
+
+.subtotal,
+.vat,
+.total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtotal,
+.vat {
+  font-size: 14px;
+  color: var(--color-700);
+}
+
+.bag {
+  position: relative;
+}
+
+.buttonBack {
+  position: absolute;
+  top: 0px;
+  left: 45px;
+}
+
+.emptyBag {
+  font-size: 16px;
+  color: var(--ink-soft);
+  background: var(--card);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.45;
+}
+
+@media screen and (max-width: 1200px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .leftContainer {
+    max-width: none;
+  }
+
+  .checkout {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .bag {
+    padding: 30px;
+    padding-top: 60px;
+  }
+
+  .buttonBack {
+    left: 22px;
+  }
+
+  .checkout {
+    padding: 40px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .bag {
+    padding: 20px;
+    padding-top: 60px;
+  }
+
+  .buttonBack {
+    left: 11px;
+  }
+
+  .checkout {
+    padding: 30px;
+  }
+}
+
+.browseLink {
+  color: var(--leaf);
+  font-weight: 600;
+  width: fit-content;
+}
+
+.browseLink:hover {
+  text-decoration: underline;
+}
+
+.status {
+  padding: 14px 16px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.success {
+  background: rgba(31, 90, 56, 0.1);
+  color: var(--leaf);
+}
+
+.error {
+  background: rgba(180, 40, 40, 0.08);
+  color: var(--color-red);
+}
