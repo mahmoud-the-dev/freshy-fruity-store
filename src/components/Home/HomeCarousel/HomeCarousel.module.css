@@ -1,0 +1,60 @@
+.carouselFruit {
+  background:
+    radial-gradient(circle at 70% 20%, rgba(240, 180, 41, 0.28), transparent 50%),
+    var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease;
+}
+
+.carouselFruit:hover {
+  transform: translateY(-4px);
+}
+
+.image {
+  height: 92px;
+  width: 92px;
+  object-fit: contain;
+}
+
+.carouselFruit {
+  position: relative;
+}
+
+.info {
+  position: absolute;
+  --spacing: 17px;
+  bottom: var(--spacing);
+  left: var(--spacing);
+}
+
+.info h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+}
+
+.homeCarousel {
+  width: 700px;
+}
+
+.carouselItem {
+  height: 240px;
+}
+
+@media (max-width: 1024px) {
+  .homeCarousel {
+    width: 466px;
+  }
+}
+
+@media (max-width: 600px) {
+  .homeCarousel {
+    width: 220px;
+  }
+}
