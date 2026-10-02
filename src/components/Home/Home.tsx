@@ -21,7 +21,17 @@ const HomeSkeleton = () => {
         </div>
         <div className={styles.heroArt}>
           <span className={`${styles.bone} ${styles.heroBoneLogo}`} />
+          <span className={`${styles.bone} ${styles.heroBoneStamp}`} />
         </div>
+      </section>
+      <section className={`${styles.values} ${styles.valuesSkeleton}`} aria-hidden="true">
+        {Array.from({ length: 3 }, (_, index) => (
+          <article key={index} className={styles.value}>
+            <span className={`${styles.bone} ${styles.valueBoneMark}`} />
+            <span className={`${styles.bone} ${styles.valueBoneTitle}`} />
+            <span className={`${styles.bone} ${styles.valueBoneLine}`} />
+          </article>
+        ))}
       </section>
     </>
   );
@@ -92,7 +102,8 @@ const Home = () => {
           <p className={styles.eyebrow}>This week on the table</p>
           <h2>Featured produce</h2>
         </div>
-        <HomeCarousel fruits={page?.featured ?? []} />
+        {loading ? <div className={`${styles.bone} ${styles.carouselSkeleton}`} aria-hidden="true" /> : null}
+        {!loading ? <HomeCarousel fruits={page?.featured ?? []} /> : null}
       </section>
     </div>
   );
