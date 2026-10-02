@@ -17,7 +17,7 @@ type CheckoutState =
 
 const Bag = () => {
   const navigate = useNavigate();
-  const { fruits, setFruits } = useStoreContext();
+  const { fruits, setFruits, loadCatalog } = useStoreContext();
   const [checkout, setCheckout] = useState<CheckoutState>({ status: "idle" });
   useDocumentMeta({
     title: "Your market bag | Freshy Fruity",
@@ -31,6 +31,10 @@ const Bag = () => {
   const subtotal = fruitsInBag.reduce((total, fruit) => total + fruit.price * fruit.quantity, 0);
   const vat = subtotal * 0.2;
   const total = subtotal + vat;
+
+  useEffect(() => {
+    loadCatalog();
+  }, [loadCatalog]);
 
   useEffect(() => {
     if (checkout.status === "success" && fruitsInBag.length > 0) {

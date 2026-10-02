@@ -123,7 +123,11 @@ const FruitView = () => {
     Promise.all([fetchProduct(slug), fetchRecommendations(slug)])
       .then(([product, recommendations]) => {
         if (cancelled) return;
-        setDetail(mapProduct(product));
+        const fruit = mapProduct(product);
+        setDetail(fruit);
+        setFruits((current) =>
+          current.some((item) => item.id === fruit.id) ? current : [...current, fruit]
+        );
         setSeo(product.seo ?? null);
         setRecommended(recommendations.map(mapProduct));
         setPageStatus("ready");
@@ -141,7 +145,7 @@ const FruitView = () => {
     return () => {
       cancelled = true;
     };
-  }, [slug, attempt]);
+  }, [slug, attempt, setFruits]);
 
   if (pageStatus === "loading") {
     return <FruitViewSkeleton />;

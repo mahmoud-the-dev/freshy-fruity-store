@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useCallback,
+  useRef,
   ReactNode,
   FC,
   Dispatch,
@@ -16,7 +17,7 @@ import { fetchProducts, mapProduct } from "./api/client";
 
 type SetFruits = Dispatch<SetStateAction<Fruits>>;
 type SetFilters = Dispatch<SetStateAction<Filters>>;
-export type CatalogStatus = "loading" | "ready" | "error";
+export type CatalogStatus = "idle" | "loading" | "ready" | "error";
 
 interface StoreContext {
   fruits: Fruits;
@@ -25,6 +26,7 @@ interface StoreContext {
   setFilters: SetFilters;
   catalogStatus: CatalogStatus;
   catalogError: string | null;
+  loadCatalog: () => void;
   reloadCatalog: () => void;
 }
 
@@ -42,15 +44,26 @@ export const useStoreContext = () => {
 export const StoreContextProvider: FC<StoreContextProviderProps> = ({ children }) => {
   const [fruits, setFruits] = useState<Fruits>([]);
   const [filters, setFilters] = useState<Filters>(initialFilters);
-  const [catalogStatus, setCatalogStatus] = useState<CatalogStatus>("loading");
+  const [catalogStatus, setCatalogStatus] = useState<CatalogStatus>("idle");
   const [catalogError, setCatalogError] = useState<string | null>(null);
   const [reloadToken, setReloadToken] = useState(0);
+  const hasLoadedCatalog = useRef(false);
+
+  const loadCatalog = useCallback(() => {
+    if (hasLoadedCatalog.current) return;
+
+    hasLoadedCatalog.current = true;
+    setReloadToken((token) => token + 1);
+  }, []);
 
   const reloadCatalog = useCallback(() => {
+    hasLoadedCatalog.current = true;
     setReloadToken((token) => token + 1);
   }, []);
 
   useEffect(() => {
+    if (reloadToken === 0) return;
+
     let cancelled = false;
     setCatalogStatus("loading");
     setCatalogError(null);
@@ -58,12 +71,17 @@ export const StoreContextProvider: FC<StoreContextProviderProps> = ({ children }
     fetchProducts()
       .then((products) => {
         if (cancelled) return;
-        setFruits(products.map(mapProduct));
+        setFruits((current) =>
+          products.map((product) => {
+            const fruit = mapProduct(product);
+            const existing = current.find((item) => item.id === fruit.id);
+            return existing ? { ...fruit, quantity: existing.quantity, isFavorite: existing.isFavorite, inBag: existing.inBag } : fruit;
+          })
+        );
         setCatalogStatus("ready");
       })
       .catch((error: unknown) => {
         if (cancelled) return;
-        setFruits([]);
         setCatalogStatus("error");
         setCatalogError(error instanceof Error ? error.message : "Could not load the stall.");
       });
@@ -75,7 +93,7 @@ export const StoreContextProvider: FC<StoreContextProviderProps> = ({ children }
 
   return (
     <StoreContext.Provider
-      value={{ fruits, setFruits, filters, setFilters, catalogStatus, catalogError, reloadCatalog }}
+      value={{ fruits, setFruits, filters, setFilters, catalogStatus, catalogError, loadCatalog, reloadCatalog }}
     >
       {children}
     </StoreContext.Provider>
