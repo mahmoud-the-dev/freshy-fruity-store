@@ -7,7 +7,7 @@ const ErrorPage = () => {
 
   return (
     <div className={styles.errorPage}>
-      <img src="/images/logo.png" alt="Freshy Fruity" className={styles.logo} />
+      <img src="/images/optimized/logo.webp" alt="Freshy Fruity" className={styles.logo} width="192" height="48" />
       <h1>This aisle doesn’t exist.</h1>
       <div className={styles.errorBody}>
         <h2>404 — we looked behind the citrus crates and found nothing.</h2>

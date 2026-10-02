@@ -79,7 +79,15 @@ const Home = () => {
             </div>
           </div>
           <div className={styles.heroArt}>
-            <img src={hero.logoUrl} alt={hero.logoAlt} className={styles.heroLogo} sizes="100vw" />
+            <img
+              src="/images/optimized/logo-transparent.webp"
+              alt={hero.logoAlt}
+              className={styles.heroLogo}
+              width="280"
+              height="70"
+              fetchPriority="high"
+              decoding="async"
+            />
             <p className={styles.heroStamp}>{hero.stamp}</p>
           </div>
         </section>

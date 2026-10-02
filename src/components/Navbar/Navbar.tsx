@@ -13,7 +13,13 @@ const Navbar = () => {
     <nav className={`${styles.navbar} ${storeNav ? styles.storeNav : ""}`}>
       <div className={styles.navbarLeft}>
         <Link to="/" className={styles.logo} aria-label="Freshy Fruity home">
-          <img src="/images/logo-transparent.png" alt="" className={styles.logoMark} sizes="100vw" />
+          <img
+            src="/images/optimized/logo-transparent.webp"
+            alt=""
+            className={styles.logoMark}
+            width="280"
+            height="70"
+          />
         </Link>
         <NavbarLinks />
       </div>

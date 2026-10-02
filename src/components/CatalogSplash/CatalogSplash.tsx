@@ -8,7 +8,7 @@ interface CatalogSplashProps {
 const CatalogSplash = ({ error, onRetry }: CatalogSplashProps) => {
   return (
     <div className={styles.splash}>
-      <img src="/images/logo.png" alt="Freshy Fruity" className={styles.logo} />
+      <img src="/images/optimized/logo.webp" alt="Freshy Fruity" className={styles.logo} width="192" height="48" />
       <h1>The stall couldn’t open.</h1>
       <p>{error}</p>
       {onRetry ? (

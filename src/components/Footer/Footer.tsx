@@ -6,7 +6,15 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.brand}>
-          <img src="/images/logo-transparent.png" alt="Freshy Fruity" className={styles.logo} />
+          <img
+            src="/images/optimized/logo-transparent.webp"
+            alt="Freshy Fruity"
+            className={styles.logo}
+            width="280"
+            height="70"
+            loading="lazy"
+            decoding="async"
+          />
           <p className={styles.tagline}>
             Sun-ripened produce from nearby farms, packed like a neighborhood stall — not a warehouse aisle.
           </p>
