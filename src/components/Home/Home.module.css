@@ -157,23 +157,16 @@
 }
 
 .heroSkeleton {
-  padding: 18px 22px;
-  gap: 16px;
-  border-radius: 18px;
+  min-height: 356px;
 }
 
 .heroSkeleton .heroActions {
-  margin-top: 12px;
-  gap: 8px;
 }
 
 .valuesSkeleton {
-  gap: 12px;
 }
 
 .valuesSkeleton .value {
-  padding: 12px 14px;
-  border-radius: 14px;
 }
 
 .bone {
@@ -201,7 +194,7 @@
 
 .heroBoneTitle {
   width: min(240px, 70%);
-  height: 14px;
+  height: 110px;
   margin-bottom: 10px;
 }
 
@@ -217,8 +210,8 @@
 
 .heroBoneButton,
 .heroBoneButtonGhost {
-  width: 72px;
-  height: 22px;
+  width: 132px;
+  height: 48px;
   border-radius: 999px;
 }
 
@@ -227,9 +220,15 @@
 }
 
 .heroBoneLogo {
-  width: 56px;
-  height: 56px;
+  width: min(280px, 100%);
+  aspect-ratio: 4 / 1;
   border-radius: 50%;
+}
+
+.heroBoneStamp {
+  width: 180px;
+  height: 36px;
+  margin-top: 16px;
 }
 
 .valuesSkeleton .bone {
@@ -257,6 +256,41 @@
   height: 6px;
 }
 
+.featuredSkeleton {
+  min-height: 336px;
+}
+
+.featuredSkeleton .featuredHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.featuredBoneEyebrow {
+  width: 180px;
+  height: 13px;
+}
+
+.featuredBoneTitle {
+  width: 240px;
+  height: 36px;
+}
+
+.carouselSkeleton {
+  width: 700px;
+  display: grid;
+  grid-template-columns: repeat(3, 220px);
+  gap: 20px;
+}
+
+.carouselBone {
+  width: 220px;
+  height: 220px;
+  border-radius: 22px;
+  background: var(--paper-deep);
+}
+
 @keyframes homeShimmer {
   100% {
     transform: translateX(100%);
@@ -281,6 +315,24 @@
 
   .values {
     grid-template-columns: 1fr;
+  }
+
+  .heroSkeleton {
+    min-height: 430px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .carouselSkeleton {
+    width: 466px;
+    grid-template-columns: repeat(2, 220px);
+  }
+}
+
+@media (max-width: 600px) {
+  .carouselSkeleton {
+    width: 220px;
+    grid-template-columns: 220px;
   }
 }
 

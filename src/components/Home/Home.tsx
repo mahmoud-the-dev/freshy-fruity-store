@@ -21,6 +21,27 @@ const HomeSkeleton = () => {
         </div>
         <div className={styles.heroArt}>
           <span className={`${styles.bone} ${styles.heroBoneLogo}`} />
+          <span className={`${styles.bone} ${styles.heroBoneStamp}`} />
+        </div>
+      </section>
+      <section className={`${styles.values} ${styles.valuesSkeleton}`} aria-hidden="true">
+        {Array.from({ length: 3 }, (_, index) => (
+          <article key={index} className={styles.value}>
+            <span className={`${styles.bone} ${styles.valueBoneMark}`} />
+            <span className={`${styles.bone} ${styles.valueBoneTitle}`} />
+            <span className={`${styles.bone} ${styles.valueBoneLine}`} />
+          </article>
+        ))}
+      </section>
+      <section className={`${styles.featured} ${styles.featuredSkeleton}`} aria-hidden="true">
+        <div className={styles.featuredHead}>
+          <span className={`${styles.bone} ${styles.featuredBoneEyebrow}`} />
+          <span className={`${styles.bone} ${styles.featuredBoneTitle}`} />
+        </div>
+        <div className={styles.carouselSkeleton}>
+          {Array.from({ length: 3 }, (_, index) => (
+            <span key={index} className={`${styles.bone} ${styles.carouselBone}`} />
+          ))}
         </div>
       </section>
     </>
@@ -87,13 +108,13 @@ const Home = () => {
         </section>
       ) : null}
 
-      <section className={styles.featured}>
+      {!loading ? <section className={styles.featured}>
         <div className={styles.featuredHead}>
           <p className={styles.eyebrow}>This week on the table</p>
           <h2>Featured produce</h2>
         </div>
         <HomeCarousel fruits={page?.featured ?? []} />
-      </section>
+      </section> : null}
     </div>
   );
 };

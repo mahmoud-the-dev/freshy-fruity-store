@@ -28,6 +28,27 @@
   grid-gap: 18px;
 }
 
+.cardSkeleton {
+  aspect-ratio: 9 / 10;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--paper-deep), var(--card), var(--paper-deep));
+  background-size: 200% 100%;
+  animation: catalogShimmer 1.4s ease infinite;
+}
+
+@keyframes catalogShimmer {
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardSkeleton {
+    animation: none;
+  }
+}
+
 .noMatch {
   color: var(--ink-soft);
   background: var(--card);
@@ -40,6 +61,10 @@
 @media (max-width: 1050px) {
   .fruitGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cardSkeleton {
+    aspect-ratio: 9 / 12;
   }
 }
 
@@ -55,6 +80,10 @@
   .fruitGrid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .cardSkeleton {
+    aspect-ratio: 9 / 12;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -65,6 +94,10 @@
   .fruitGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .cardSkeleton {
+    aspect-ratio: 9 / 10;
+  }
 }
 
 @media screen and (max-width: 540px) {
@@ -74,5 +107,16 @@
 
   .fruitGrid {
     grid-gap: 12px;
+  }
+
+  .cardSkeleton {
+    border-radius: 14px;
+    aspect-ratio: 10 / 12;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .cardSkeleton {
+    aspect-ratio: 10 / 16;
   }
 }
