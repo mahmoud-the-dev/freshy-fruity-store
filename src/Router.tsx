@@ -11,6 +11,7 @@ const FruitView = lazy(() => import("./components/FruitSection/FruitView/FruitVi
 const Bag = lazy(() => import("./components/Bag/Bag.tsx"));
 
 const PageFallback = () => <div style={{ minHeight: "100vh" }} aria-busy="true" aria-label="Loading page" />;
+const StoreFallback = () => <div style={{ minHeight: "3600px" }} aria-busy="true" aria-label="Loading catalog" />;
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -30,7 +31,7 @@ const Router = () => {
         {
           path: "/store",
           element: (
-            <Suspense fallback={<PageFallback />}>
+            <Suspense fallback={<StoreFallback />}>
               <Store />
             </Suspense>
           ),
