@@ -45,7 +45,15 @@ const FruitItem = ({ fruit }: FruitItemProps) => {
             onClick={(e) => handleFavoriteClick(e)}
           />
 
-          <img className={styles.image} src={fruit.imageUrl} alt={name} />
+          <img
+            className={styles.image}
+            src={fruit.imageUrl}
+            alt={name}
+            width="88"
+            height="88"
+            loading="lazy"
+            decoding="async"
+          />
 
           <div className={styles.info}>
             <h3 className={styles.name}>{name}</h3>
