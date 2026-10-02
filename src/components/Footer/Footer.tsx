@@ -14,8 +14,8 @@ const Footer = () => {
 
         <div className={styles.column}>
           <h2>Market</h2>
-          <p>412 Orchard Lane</p>
-          <p>Riverside District</p>
+          <p>412 Orchard Lane, Riverside District</p>
+          <p>Charleston, SC 29403</p>
           <p>Mon–Sat 7:00–19:00</p>
           <p>Sunday 8:00–15:00</p>
         </div>
@@ -34,13 +34,13 @@ const Footer = () => {
 
         <div className={styles.column}>
           <h2>Socials</h2>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+          <a href="https://instagram.com/freshy-fruity" target="_blank" rel="noreferrer">
             Instagram
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noreferrer">
+          <a href="https://facebook.com/freshy-fruity" target="_blank" rel="noreferrer">
             Facebook
           </a>
-          <a href="https://pinterest.com" target="_blank" rel="noreferrer">
+          <a href="https://pinterest.com/freshy-fruity" target="_blank" rel="noreferrer">
             Pinterest
           </a>
         </div>
