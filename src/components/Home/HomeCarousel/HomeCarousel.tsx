@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -37,6 +38,18 @@ const CarouselFruit = ({ fruit }: CarouselFruitProps) => {
 };
 
 const HomeCarousel = ({ fruits }: HomeCarouselProps) => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
   if (fruits.length === 0) {
     return null;
   }
@@ -46,7 +59,7 @@ const HomeCarousel = ({ fruits }: HomeCarouselProps) => {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: !prefersReducedMotion,
     autoplaySpeed: 2000,
     responsive: [
       {
