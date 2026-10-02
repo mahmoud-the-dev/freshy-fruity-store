@@ -20,7 +20,7 @@ const BagFruit = ({ fruit }) => {
       <div className={styles.leftContainer}>
         <Link to={`/store/${slug}`}>
           <div className={styles.imageContainer}>
-            <img className={styles.image} src={fruit.imageUrl} alt={name} />
+            <img className={styles.image} src={fruit.imageUrl} alt={name} width="512" height="512" decoding="async" />
           </div>
         </Link>
 

@@ -174,7 +174,15 @@ const FruitView = () => {
               isFilled={isFavorite}
               onClick={() => handleFavoriteClick()}
             />
-            <img className={styles.image} src={fruit.imageUrl} alt={name} />
+            <img
+              className={styles.image}
+              src={fruit.imageUrl}
+              alt={name}
+              width="512"
+              height="512"
+              fetchPriority="high"
+              decoding="async"
+            />
             {expressDelivery ? <ExpressDelivery variant="stamp" /> : null}
           </div>
 

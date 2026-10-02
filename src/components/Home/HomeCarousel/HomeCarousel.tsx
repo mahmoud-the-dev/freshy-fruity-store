@@ -19,7 +19,15 @@ const CarouselFruit = ({ fruit }: CarouselFruitProps) => {
   return (
     <Link to={`/store/${slug}`}>
       <div className={styles.carouselFruit}>
-        <img className={styles.image} src={fruit.imageUrl} alt={name} />
+        <img
+          className={styles.image}
+          src={fruit.imageUrl}
+          alt={name}
+          width="512"
+          height="512"
+          loading="lazy"
+          decoding="async"
+        />
         <div className={styles.info}>
           <h3>{name}</h3>
         </div>
