@@ -1,5 +1,4 @@
 import { useStoreContext } from "../../Context";
-import { Flipper } from "react-flip-toolkit";
 import styles from "./FruitSection.module.css";
 import filterFruits from "../../utils/filterFruits";
 import FruitItem from "./FruitItem/FruitItem";
@@ -33,18 +32,11 @@ const FruitSection = () => {
           Nothing on the stall matches those filters. Loosen a color, family, or search and try again.
         </p>
       ) : (
-        <Flipper
-          flipKey={filteredFruits.map((item) => item.id).join("-")}
-          spring={{
-            stiffness: 700,
-            damping: 70,
-          }}>
-          <div className={styles.fruitGrid}>
-            {filteredFruits.map((fruit) => (
-              <FruitItem key={fruit.id} fruit={fruit} />
-            ))}
-          </div>
-        </Flipper>
+        <div className={styles.fruitGrid}>
+          {filteredFruits.map((fruit) => (
+            <FruitItem key={fruit.id} fruit={fruit} />
+          ))}
+        </div>
       )}
     </div>
   );

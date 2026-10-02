@@ -1,6 +1,5 @@
 import { useStoreContext } from "../../../Context";
 import { Link } from "react-router-dom";
-import { Flipped } from "react-flip-toolkit";
 import styles from "./FruitItem.module.css";
 import { formatUnitPrice } from "../../../utils/formatPrice";
 import { Fruit } from "../../../data/types";
@@ -32,37 +31,35 @@ const FruitItem = ({ fruit }: FruitItemProps) => {
 
   return (
     <Link to={`/store/${slug}`}>
-      <Flipped key={id} flipId={id}>
-        <div className={styles.fruitItem}>
-          {expressDelivery ? (
-            <span className={styles.express}>
-              <ExpressDelivery variant="chip" />
-            </span>
-          ) : null}
-          <FavoriteIcon
-            className={`${styles.favorite} ${isFavorite ? styles.clicked : ""}`}
-            isFilled={isFavorite}
-            onClick={(e) => handleFavoriteClick(e)}
-          />
+      <div className={styles.fruitItem}>
+        {expressDelivery ? (
+          <span className={styles.express}>
+            <ExpressDelivery variant="chip" />
+          </span>
+        ) : null}
+        <FavoriteIcon
+          className={`${styles.favorite} ${isFavorite ? styles.clicked : ""}`}
+          isFilled={isFavorite}
+          onClick={(e) => handleFavoriteClick(e)}
+        />
 
-          <img
-            className={styles.image}
-            src={fruit.imageUrl}
-            alt={name}
-            width="512"
-            height="512"
-            loading="lazy"
-            decoding="async"
-          />
+        <img
+          className={styles.image}
+          src={fruit.imageUrl}
+          alt={name}
+          width="512"
+          height="512"
+          loading="lazy"
+          decoding="async"
+        />
 
-          <div className={styles.info}>
-            <h3 className={styles.name}>{name}</h3>
-            <h4 className={styles.family}>{family} Family</h4>
-            <h5 className={styles.price}>{formatUnitPrice(price, unit)}</h5>
-          </div>
-          <BagIcon className={styles.bag} isFilled={inBag} onClick={(e) => handleBagClick(e)} />
+        <div className={styles.info}>
+          <h3 className={styles.name}>{name}</h3>
+          <h4 className={styles.family}>{family} Family</h4>
+          <h5 className={styles.price}>{formatUnitPrice(price, unit)}</h5>
         </div>
-      </Flipped>
+        <BagIcon className={styles.bag} isFilled={inBag} onClick={(e) => handleBagClick(e)} />
+      </div>
     </Link>
   );
 };
