@@ -40,21 +40,32 @@
 }
 
 .homeCarousel {
-  width: 700px;
+  width: min(700px, 100%);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  padding-bottom: 12px;
+}
+
+.track {
+  display: flex;
+  gap: 20px;
 }
 
 .carouselItem {
   height: 240px;
+  flex: 0 0 220px;
+  scroll-snap-align: start;
 }
 
 @media (max-width: 1024px) {
   .homeCarousel {
-    width: 466px;
+    max-width: 460px;
   }
 }
 
 @media (max-width: 600px) {
   .homeCarousel {
-    width: 220px;
+    max-width: 220px;
   }
 }
