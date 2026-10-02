@@ -28,6 +28,13 @@
   grid-gap: 18px;
 }
 
+.skeletonCard {
+  aspect-ratio: 9 / 10;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper-deep);
+}
+
 .noMatch {
   color: var(--ink-soft);
   background: var(--card);
@@ -55,6 +62,10 @@
   .fruitGrid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .skeletonCard {
+    aspect-ratio: 9 / 12;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -65,6 +76,10 @@
   .fruitGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .skeletonCard {
+    aspect-ratio: 9 / 10;
+  }
 }
 
 @media screen and (max-width: 540px) {
@@ -74,5 +89,16 @@
 
   .fruitGrid {
     grid-gap: 12px;
+  }
+
+  .skeletonCard {
+    aspect-ratio: 10 / 12;
+    border-radius: 14px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .skeletonCard {
+    aspect-ratio: 10 / 16;
   }
 }
