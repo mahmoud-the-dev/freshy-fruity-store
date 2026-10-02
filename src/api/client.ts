@@ -68,7 +68,9 @@ export class ApiError extends Error {
   }
 }
 
-const apiUrl = () => (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+const defaultApiUrl = "https://freshy-fruity-api.edu-mahmoud-ahmed.workers.dev";
+
+const apiUrl = () => (import.meta.env.VITE_API_URL ?? defaultApiUrl).replace(/\/$/, "");
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const base = apiUrl();
