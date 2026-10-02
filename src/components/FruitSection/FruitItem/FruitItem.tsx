@@ -16,35 +16,25 @@ const FruitItem = ({ fruit }: FruitItemProps) => {
   const { setFruits } = useStoreContext();
   const { id, name, slug, price, unit, family, isFavorite, inBag, expressDelivery } = fruit;
 
-  const handleFavoriteClick = (e) => {
-    e.preventDefault();
-
+  const handleFavoriteClick = () => {
     setFruits((prevFruits) =>
       prevFruits.map((f) => (f.id === id ? { ...f, isFavorite: !f.isFavorite } : f))
     );
   };
 
-  const handleBagClick = (e) => {
-    e.preventDefault();
-
+  const handleBagClick = () => {
     setFruits((prevFruits) => prevFruits.map((f) => (f.id === id ? { ...f, inBag: !f.inBag } : f)));
   };
 
   return (
-    <Link to={`/store/${slug}`}>
-      <Flipped key={id} flipId={id}>
-        <div className={styles.fruitItem}>
+    <Flipped key={id} flipId={id}>
+      <div className={styles.fruitItem}>
+        <Link to={`/store/${slug}`} className={styles.cardLink} aria-label={`View ${name}`}>
           {expressDelivery ? (
             <span className={styles.express}>
               <ExpressDelivery variant="chip" />
             </span>
           ) : null}
-          <FavoriteIcon
-            className={`${styles.favorite} ${isFavorite ? styles.clicked : ""}`}
-            isFilled={isFavorite}
-            onClick={(e) => handleFavoriteClick(e)}
-          />
-
           <img
             className={styles.image}
             src={fruit.imageUrl}
@@ -57,13 +47,28 @@ const FruitItem = ({ fruit }: FruitItemProps) => {
 
           <div className={styles.info}>
             <h3 className={styles.name}>{name}</h3>
-            <h4 className={styles.family}>{family} Family</h4>
-            <h5 className={styles.price}>{formatUnitPrice(price, unit)}</h5>
+            <p className={styles.family}>{family} Family</p>
+            <p className={styles.price}>{formatUnitPrice(price, unit)}</p>
           </div>
-          <BagIcon className={styles.bag} isFilled={inBag} onClick={(e) => handleBagClick(e)} />
-        </div>
-      </Flipped>
-    </Link>
+        </Link>
+        <button
+          type="button"
+          className={`${styles.favorite} ${isFavorite ? styles.clicked : ""}`}
+          aria-label={`${isFavorite ? "Remove" : "Add"} ${name} ${isFavorite ? "from" : "to"} favorites`}
+          aria-pressed={isFavorite}
+          onClick={handleFavoriteClick}>
+          <FavoriteIcon isFilled={isFavorite} />
+        </button>
+        <button
+          type="button"
+          className={styles.bag}
+          aria-label={`${inBag ? "Remove" : "Add"} ${name} ${inBag ? "from" : "to"} bag`}
+          aria-pressed={inBag}
+          onClick={handleBagClick}>
+          <BagIcon isFilled={inBag} />
+        </button>
+      </div>
+    </Flipped>
   );
 };
 

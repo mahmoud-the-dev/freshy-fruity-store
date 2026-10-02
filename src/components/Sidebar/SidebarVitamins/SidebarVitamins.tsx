@@ -24,21 +24,23 @@ const SidebarVitamins = () => {
 
   return (
     <div className={styles.sidebarVitamins}>
-      <div className={styles.title} onClick={toggleNavbar}>
+      <button type="button" className={styles.title} onClick={toggleNavbar} aria-expanded={isExpanded}>
         <h2>Vitamins {checkedCount ? `(${checkedCount})` : ""}</h2>
         <ExpandIcon className={styles.expandIcon} isExpanded={isExpanded} />
-      </div>
+      </button>
       <div className={`${styles.list} ${isExpanded ? styles.expanded : ""}`}>
         {vitamins.map((vitamin, index) => (
-          <div
+          <button
+            type="button"
             key={vitamin.name}
             className={styles.listItem}
+            aria-pressed={vitamin.isChecked}
             onClick={() => handleCheckboxClick(index)}>
             <span className={`${styles.checkbox} ${vitamin.isChecked ? styles.checked : ""}`}>
               {vitamin.isChecked && <CheckIcon className={styles.checkIcon} />}
             </span>
             <span className={styles.itemName}>{vitamin.name}</span>
-          </div>
+          </button>
         ))}
       </div>
     </div>

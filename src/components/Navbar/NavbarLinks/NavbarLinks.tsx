@@ -14,12 +14,12 @@ const NavbarLinks = () => {
     <ul className={styles.navbarLinks}>
       <li className={styles.link}>
         <Link to="/">
-          <h3>Home</h3>
+          Home
         </Link>
       </li>
       <li className={styles.link} onClick={handleStoreClick}>
         <Link to="/store">
-          <h3>Store</h3>
+          Store
         </Link>
       </li>
     </ul>

@@ -9,6 +9,9 @@
 }
 
 .editButton {
+  padding: 0;
+  background: transparent;
+  color: inherit;
   cursor: pointer;
   width: 24px;
   height: 24px;

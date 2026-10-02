@@ -37,18 +37,22 @@ const ActiveFilters = () => {
       {checkedFilters.map((filter) => (
         <div key={filter.name} className={styles.activeFilter}>
           {filter.name}
-          <div className={styles.closeButton} onClick={() => handleCloseClick(filter.name)}>
+          <button
+            type="button"
+            className={styles.closeButton}
+            aria-label={`Remove ${filter.name} filter`}
+            onClick={() => handleCloseClick(filter.name)}>
             <CloseIcon className={styles.closeIcon} />
-          </div>
+          </button>
         </div>
       ))}
 
       {query && (
         <div className={styles.activeFilter}>
           "{query}"
-          <div className={styles.closeButton} onClick={() => handleCloseQuery()}>
+          <button type="button" className={styles.closeButton} aria-label="Clear search" onClick={handleCloseQuery}>
             <CloseIcon className={styles.closeIcon} />
-          </div>
+          </button>
         </div>
       )}
     </div>

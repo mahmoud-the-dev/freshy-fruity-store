@@ -76,7 +76,7 @@ const Bag = () => {
     <div className={styles.bag}>
       <ButtonBack className={styles.buttonBack} onClick={handleGoBack} />
 
-      <h2>Your market bag</h2>
+      <h1>Your market bag</h1>
 
       <div className={styles.main}>
         <ul className={styles.leftContainer}>

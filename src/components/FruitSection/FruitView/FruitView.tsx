@@ -203,11 +203,14 @@ const FruitView = () => {
 
         <div className={styles.leftContainer}>
           <div className={styles.imageContainer}>
-            <FavoriteIcon
+            <button
+              type="button"
               className={`${styles.favorite} ${isFavorite ? styles.clicked : ""}`}
-              isFilled={isFavorite}
-              onClick={() => handleFavoriteClick()}
-            />
+              aria-label={`${isFavorite ? "Remove" : "Add"} ${name} ${isFavorite ? "from" : "to"} favorites`}
+              aria-pressed={isFavorite}
+              onClick={handleFavoriteClick}>
+              <FavoriteIcon isFilled={isFavorite} />
+            </button>
             <img className={styles.image} src={fruit.imageUrl} alt={name} />
             {expressDelivery ? <ExpressDelivery variant="stamp" /> : null}
           </div>
@@ -229,13 +232,13 @@ const FruitView = () => {
 
         <div className={styles.rightContainer}>
           <h1>{name}</h1>
-          <h4 className={styles.family}>{family} Family</h4>
+          <p className={styles.family}>{family} Family</p>
           <InStock />
           {expressDelivery ? <ExpressDelivery /> : null}
-          <h5 className={styles.price}>
+          <p className={styles.price}>
             {formatMoney(price * quantity)}
             <span className={styles.unitHint}>{formatUnitPrice(price, unit)}</span>
-          </h5>
+          </p>
           <EditQuantity fruit={fruit} />
           <div className={styles.description}>
             {description || "A stall favorite — ask us for tasting notes at the counter."}

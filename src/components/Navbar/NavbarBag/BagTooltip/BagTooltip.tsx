@@ -45,9 +45,13 @@ const BagTooltip = ({ fruitsInBag }: BagTooltipProps) => {
                 </div>
               </div>
               <div className={styles.rightContainer}>
-                <div className={styles.delete} onClick={() => handleDelete(fruit.id)}>
+                <button
+                  type="button"
+                  className={styles.delete}
+                  aria-label={`Remove ${fruit.name} from bag`}
+                  onClick={() => handleDelete(fruit.id)}>
                   <DeleteIcon className={styles.deleteIcon} />
-                </div>
+                </button>
                 <h5 className={styles.price}>{formatMoney(fruit.price * fruit.quantity)}</h5>
               </div>
             </li>

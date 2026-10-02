@@ -87,6 +87,8 @@
 }
 
 .delete {
+  padding: 0;
+  background: transparent;
   cursor: pointer;
   width: 24px;
   height: 24px;

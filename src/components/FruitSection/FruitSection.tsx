@@ -12,14 +12,14 @@ const FruitSection = () => {
 
   return (
     <div className={styles.fruitSection}>
-      <h2 className={styles.title}>
+      <h1 className={styles.title}>
         On the stall{isLoading ? "" : ` (${filteredFruits.length})`}
         {filters.favorite && (
           <span className={styles.favoritesTitle}>
             <span className={styles.emDash}>—</span>Favorites
           </span>
         )}
-      </h2>
+      </h1>
 
       <ActiveFilters />
 

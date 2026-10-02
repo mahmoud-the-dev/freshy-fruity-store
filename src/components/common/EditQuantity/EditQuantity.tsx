@@ -25,13 +25,13 @@ const EditQuantity = ({ fruit }) => {
 
   return (
     <div className={styles.editQuantity}>
-      <div className={styles.editButton} onClick={handleMinusClick}>
+      <button type="button" className={styles.editButton} aria-label="Decrease quantity" onClick={handleMinusClick}>
         <MinusIcon className={styles.icon} />
-      </div>
+      </button>
       <div className={styles.number}>{quantity}</div>
-      <div className={styles.editButton} onClick={handlePlusClick}>
+      <button type="button" className={styles.editButton} aria-label="Increase quantity" onClick={handlePlusClick}>
         <PlusIcon className={styles.icon} />
-      </div>
+      </button>
     </div>
   );
 };

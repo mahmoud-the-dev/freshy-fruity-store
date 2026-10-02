@@ -40,9 +40,9 @@ const BagFruit = ({ fruit }) => {
       </div>
 
       <div className={styles.rightContainer}>
-        <div className={styles.delete} onClick={handleDelete}>
+        <button type="button" className={styles.delete} aria-label={`Remove ${name} from bag`} onClick={handleDelete}>
           <DeleteIcon className={styles.deleteIcon} />
-        </div>
+        </button>
 
         <h5 className={styles.price}>{formatMoney(price * quantity)}</h5>
       </div>

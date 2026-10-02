@@ -24,22 +24,24 @@ const SidebarColor = () => {
 
   return (
     <div className={styles.sidebarColor}>
-      <div className={styles.title} onClick={toggleNavbar}>
+      <button type="button" className={styles.title} onClick={toggleNavbar} aria-expanded={isExpanded}>
         <h2>Color {checkedCount ? `(${checkedCount})` : ""}</h2>
         <ExpandIcon className={styles.expandIcon} isExpanded={isExpanded} />
-      </div>
+      </button>
 
       <div className={`${styles.grid} ${isExpanded && styles.expanded}`}>
         {colors.map((color, index) => (
-          <div
+          <button
+            type="button"
             key={color.name}
             className={`${styles.gridItem} ${color.isChecked ? styles.clicked : ""}`}
+            aria-pressed={color.isChecked}
             onClick={() => handleCheckboxClick(index)}>
             <div className={`${styles.checkbox} ${styles[color.name]}`}>
               {color.isChecked && <CheckIcon className={styles.checkIcon} />}
             </div>
             <span className={styles.itemName}>{color.name}</span>
-          </div>
+          </button>
         ))}
       </div>
     </div>

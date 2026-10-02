@@ -223,6 +223,10 @@
 }
 
 .favorite {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
   position: absolute;
   top: 25px;
   right: 25px;
@@ -247,6 +251,11 @@
 .favorite.clicked {
   fill: var(--color-red);
   opacity: 1;
+}
+
+.favorite svg {
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (max-width: 940px) {
