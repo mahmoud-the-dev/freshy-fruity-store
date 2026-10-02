@@ -14,7 +14,7 @@ import FavoriteIcon from "../../../icons/FavoriteIcon";
 import FruitItem from "../FruitItem/FruitItem";
 import { ApiError, fetchProduct, fetchRecommendations, mapProduct, ProductSeo } from "../../../api/client";
 import { Fruit, Fruits } from "../../../data/types";
-import { useDocumentMeta } from "../../../utils/documentMeta";
+import { siteUrl, useDocumentMeta, useJsonLd } from "../../../utils/documentMeta";
 
 type PageStatus = "loading" | "ready" | "missing" | "error";
 
@@ -69,7 +69,40 @@ const FruitView = () => {
   const [seo, setSeo] = useState<ProductSeo | null>(null);
   const [recommended, setRecommended] = useState<Fruit[]>([]);
   const [attempt, setAttempt] = useState(0);
-  useDocumentMeta(seo?.title ?? null, seo?.description ?? null);
+  const productMeta = detail
+    ? {
+        title: seo?.title ?? `${detail.name} | Freshy Fruity`,
+        description:
+          seo?.description ?? detail.description ?? `Buy ${detail.name} from Freshy Fruity in Charleston.`,
+        path: `/store/${detail.slug}`,
+        image: detail.imageUrl,
+      }
+    : {
+        title: "Freshy Fruity | Sun-ripened fruit market in Charleston",
+        description: "Freshy Fruity is a neighborhood fruit market in Charleston for sun-ripened produce.",
+        robots: "noindex,follow",
+      };
+  useDocumentMeta(productMeta);
+  useJsonLd(
+    "product-schema",
+    detail
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: detail.name,
+          description: detail.description,
+          image: detail.imageUrl,
+          url: `${siteUrl}/store/${detail.slug}`,
+          offers: {
+            "@type": "Offer",
+            price: detail.price.toFixed(2),
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+            url: `${siteUrl}/store/${detail.slug}`,
+          },
+        }
+      : null
+  );
 
   useEffect(() => {
     if (!slug) {

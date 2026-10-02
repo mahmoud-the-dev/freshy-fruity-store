@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchHome, HomePage } from "../../api/client";
-import { homepageMeta, useDocumentMeta } from "../../utils/documentMeta";
+import { homepageMeta, siteUrl, useDocumentMeta, useJsonLd } from "../../utils/documentMeta";
 import styles from "./Home.module.css";
 import HomeCarousel from "./HomeCarousel/HomeCarousel";
 
@@ -51,7 +51,46 @@ const HomeSkeleton = () => {
 const Home = () => {
   const [page, setPage] = useState<HomePage | null>(null);
   const [loading, setLoading] = useState(true);
-  useDocumentMeta(homepageMeta.title, homepageMeta.description);
+  useDocumentMeta(homepageMeta);
+  useJsonLd("local-business-schema", {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Freshy Fruity",
+    description: homepageMeta.description,
+    url: siteUrl,
+    image: `${siteUrl}/images/logo.png`,
+    logo: `${siteUrl}/images/logo-transparent.png`,
+    telephone: "+1-555-014-8820",
+    email: "hello@freshyfruity.market",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "412 Orchard Lane, Riverside District",
+      addressLocality: "Charleston",
+      addressRegion: "SC",
+      postalCode: "29403",
+      addressCountry: "US",
+    },
+    areaServed: ["Charleston", "Riverside District"],
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "07:00",
+        closes: "19:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Sunday",
+        opens: "08:00",
+        closes: "15:00",
+      },
+    ],
+    sameAs: [
+      "https://instagram.com/freshy-fruity",
+      "https://facebook.com/freshy-fruity",
+      "https://pinterest.com/freshy-fruity",
+    ],
+  });
 
   useEffect(() => {
     let cancelled = false;

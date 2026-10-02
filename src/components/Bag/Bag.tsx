@@ -7,6 +7,7 @@ import { formatMoney } from "../../utils/formatPrice";
 import BagFruit from "./BagFruit/BagFruit";
 import ButtonBlue from "../common/ButtonBlue/ButtonBlue";
 import ButtonBack from "../common/ButtonBack/ButtonBack";
+import { useDocumentMeta } from "../../utils/documentMeta";
 
 type CheckoutState =
   | { status: "idle" }
@@ -18,6 +19,12 @@ const Bag = () => {
   const navigate = useNavigate();
   const { fruits, setFruits } = useStoreContext();
   const [checkout, setCheckout] = useState<CheckoutState>({ status: "idle" });
+  useDocumentMeta({
+    title: "Your market bag | Freshy Fruity",
+    description: "Review your Freshy Fruity market bag.",
+    path: "/bag",
+    robots: "noindex,follow",
+  });
 
   const fruitsInBag = fruits.filter((fruit) => fruit.inBag);
   const itemCount = fruitsInBag.reduce((total, fruit) => total + fruit.quantity, 0);

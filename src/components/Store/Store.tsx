@@ -6,9 +6,15 @@ import Sidebar from "../Sidebar/Sidebar";
 import FruitSection from "../FruitSection/FruitSection";
 import BurgerIcon from "../../icons/BurgerIcon";
 import CloseIcon from "../../icons/CloseIcon";
+import { useDocumentMeta } from "../../utils/documentMeta";
 
 const Store = () => {
   const [showBurger, setShowBurger] = useState(false);
+  useDocumentMeta({
+    title: "Fruit market | Freshy Fruity",
+    description: "Shop seasonal, sun-ripened produce from Freshy Fruity with same-day delivery in Charleston.",
+    path: "/store",
+  });
 
   useEffect(() => {
     const handleResize = () => {
