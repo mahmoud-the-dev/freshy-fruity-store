@@ -68,14 +68,11 @@ export class ApiError extends Error {
   }
 }
 
-const apiUrl = () => (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+const defaultApiUrl = "https://freshy-fruity-api.edu-mahmoud-ahmed.workers.dev";
+const apiUrl = () => (import.meta.env.VITE_API_URL ?? defaultApiUrl).replace(/\/$/, "");
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const base = apiUrl();
-  if (!base) {
-    throw new Error("Missing VITE_API_URL. Add it to .env and restart the dev server.");
-  }
-
   const response = await fetch(`${base}${path}`, init);
   const data = (await response.json()) as T & { message?: string; error?: string };
 

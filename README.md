@@ -44,7 +44,7 @@ Filters narrow down the displayed fruits.
 - **UI Library:** React
 - **Languages:** TypeScript, CSS, HTML
 - **Build Tool:** Vite
-- **Deployment:** Netlify
+- **Deployment:** Vercel
 - **Dependencies:**
   - react-burger-menu: Expandable burger menu for mobile
   - react-flip-toolkit: Transition effect when fruits re-arrange
@@ -67,7 +67,7 @@ Located in `src`:
 
 Located in the root:
 
-- `public`: Brand logo and the `_redirects` file for Netlify with React Router
+- `public`: Brand assets, crawl directives, and the Netlify SPA fallback
 - `index.html`: Entry point for the app
 
 ## Data & Functionality
@@ -155,7 +155,7 @@ Start the server
 npm run dev
 ```
 
-The store loads its catalog from the Freshy Fruity API. Copy `.env.example` to `.env` if you need a different host. The default is:
+The store loads its catalog from the Freshy Fruity API. It uses the public default API host below; copy `.env.example` to `.env` only to use a different host. Set `VITE_API_URL` in Vercel when deploying a different API.
 
 https://freshy-fruity-api.edu-mahmoud-ahmed.workers.dev
 
