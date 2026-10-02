@@ -30,7 +30,7 @@ const HomeSkeleton = () => {
 const Home = () => {
   const [page, setPage] = useState<HomePage | null>(null);
   const [loading, setLoading] = useState(true);
-  useDocumentMeta(homepageMeta.title, homepageMeta.description);
+  useDocumentMeta(homepageMeta.title, homepageMeta.description, { canonicalPath: "/" });
 
   useEffect(() => {
     let cancelled = false;

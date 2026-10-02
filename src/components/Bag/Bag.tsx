@@ -7,6 +7,7 @@ import { formatMoney } from "../../utils/formatPrice";
 import BagFruit from "./BagFruit/BagFruit";
 import ButtonBlue from "../common/ButtonBlue/ButtonBlue";
 import ButtonBack from "../common/ButtonBack/ButtonBack";
+import { bagMeta, useDocumentMeta } from "../../utils/documentMeta";
 
 type CheckoutState =
   | { status: "idle" }
@@ -18,6 +19,7 @@ const Bag = () => {
   const navigate = useNavigate();
   const { fruits, setFruits } = useStoreContext();
   const [checkout, setCheckout] = useState<CheckoutState>({ status: "idle" });
+  useDocumentMeta(bagMeta.title, bagMeta.description, { canonicalPath: "/bag", robots: "noindex,nofollow" });
 
   const fruitsInBag = fruits.filter((fruit) => fruit.inBag);
   const itemCount = fruitsInBag.reduce((total, fruit) => total + fruit.quantity, 0);

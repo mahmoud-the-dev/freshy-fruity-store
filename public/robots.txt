@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /bag
+
+Sitemap: https://freshy-fruity-store.vercel.app/sitemap.xml

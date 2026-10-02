@@ -14,7 +14,7 @@ import FavoriteIcon from "../../../icons/FavoriteIcon";
 import FruitItem from "../FruitItem/FruitItem";
 import { ApiError, fetchProduct, fetchRecommendations, mapProduct, ProductSeo } from "../../../api/client";
 import { Fruit, Fruits } from "../../../data/types";
-import { useDocumentMeta } from "../../../utils/documentMeta";
+import { storeMeta, useDocumentMeta } from "../../../utils/documentMeta";
 
 type PageStatus = "loading" | "ready" | "missing" | "error";
 
@@ -69,7 +69,10 @@ const FruitView = () => {
   const [seo, setSeo] = useState<ProductSeo | null>(null);
   const [recommended, setRecommended] = useState<Fruit[]>([]);
   const [attempt, setAttempt] = useState(0);
-  useDocumentMeta(seo?.title ?? null, seo?.description ?? null);
+  useDocumentMeta(seo?.title ?? storeMeta.title, seo?.description ?? storeMeta.description, {
+    canonicalPath: seo && slug ? `/store/${slug}` : "/store",
+    robots: seo ? "index,follow" : "noindex,nofollow",
+  });
 
   useEffect(() => {
     if (!slug) {

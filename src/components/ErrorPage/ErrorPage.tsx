@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./ErrorPage.module.css";
+import { notFoundMeta, useDocumentMeta } from "../../utils/documentMeta";
 
 const ErrorPage = () => {
+  useDocumentMeta(notFoundMeta.title, notFoundMeta.description, { robots: "noindex,nofollow" });
+
   return (
     <div className={styles.errorPage}>
       <img src="/images/logo.png" alt="Freshy Fruity" className={styles.logo} />

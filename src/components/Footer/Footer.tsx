@@ -34,13 +34,13 @@ const Footer = () => {
 
         <div className={styles.column}>
           <h2>Socials</h2>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+          <a href="https://instagram.com/freshy-fruity" target="_blank" rel="noreferrer">
             Instagram
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noreferrer">
+          <a href="https://facebook.com/freshy-fruity" target="_blank" rel="noreferrer">
             Facebook
           </a>
-          <a href="https://pinterest.com" target="_blank" rel="noreferrer">
+          <a href="https://pinterest.com/freshy-fruity" target="_blank" rel="noreferrer">
             Pinterest
           </a>
         </div>

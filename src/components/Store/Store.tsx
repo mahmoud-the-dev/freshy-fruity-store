@@ -6,9 +6,11 @@ import Sidebar from "../Sidebar/Sidebar";
 import FruitSection from "../FruitSection/FruitSection";
 import BurgerIcon from "../../icons/BurgerIcon";
 import CloseIcon from "../../icons/CloseIcon";
+import { storeMeta, useDocumentMeta } from "../../utils/documentMeta";
 
 const Store = () => {
   const [showBurger, setShowBurger] = useState(false);
+  useDocumentMeta(storeMeta.title, storeMeta.description, { canonicalPath: "/store" });
 
   useEffect(() => {
     const handleResize = () => {
