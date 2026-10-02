@@ -1,12 +1,16 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./css/reset.css";
 import "./css/global.css";
 import App from "./App.tsx";
 import Home from "./components/Home/Home.tsx";
-import Store from "./components/Store/Store.tsx";
-import FruitView from "./components/FruitSection/FruitView/FruitView.tsx";
-import Bag from "./components/Bag/Bag.tsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.tsx";
+
+const Store = lazy(() => import("./components/Store/Store.tsx"));
+const FruitView = lazy(() => import("./components/FruitSection/FruitView/FruitView.tsx"));
+const Bag = lazy(() => import("./components/Bag/Bag.tsx"));
+
+const PageFallback = () => <div style={{ minHeight: "100vh" }} aria-busy="true" aria-label="Loading page" />;
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -25,15 +29,27 @@ const Router = () => {
         },
         {
           path: "/store",
-          element: <Store />,
+          element: (
+            <Suspense fallback={<PageFallback />}>
+              <Store />
+            </Suspense>
+          ),
         },
         {
           path: "/store/:slug",
-          element: <FruitView />,
+          element: (
+            <Suspense fallback={<PageFallback />}>
+              <FruitView />
+            </Suspense>
+          ),
         },
         {
           path: "/bag",
-          element: <Bag />,
+          element: (
+            <Suspense fallback={<PageFallback />}>
+              <Bag />
+            </Suspense>
+          ),
         },
       ],
     },
